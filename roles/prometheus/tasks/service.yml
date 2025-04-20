@@ -38,5 +38,5 @@
     name: prometheus
     state: started
   register: prometheus_status
-  failed_when: prometheus_status.status != 0
+  failed_when: prometheus_status.status.ActiveState != "active"
   changed_when: false
