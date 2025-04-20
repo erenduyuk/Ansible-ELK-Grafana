@@ -1,0 +1,21 @@
+---
+
+- hosts: elk
+  become: yes
+  roles:
+    - elasticsearch
+    - logstash
+    - kibana
+
+- hosts: clients
+  become: yes
+  roles:
+    - node_exporter
+    - filebeat  
+
+- hosts: monitoring
+  become: yes
+  roles:
+    - prometheus
+    - grafana
+    - alertmanager
