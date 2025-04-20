@@ -21,7 +21,7 @@
 
 - name: Download prometheus archive
   ansible.builtin.get_url:
-    url: "https://github.com/prometheus/prometheus/releases/download/v2.51.1/prometheus-2.51.1.linux-amd64.tar.gz"
+    url: "https://github.com/prometheus/prometheus/releases/download/v2.51.1/prometheus-2.51.1.linux-arm64.tar.gz"
     dest: /tmp/prometheus.tar.gz
     mode: '0644'
 

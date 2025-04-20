@@ -13,7 +13,7 @@
     - { role: filebeat, tags: ['filebeat', 'clients'] }
     - { role: node_exporter, tags: ['node_exporter', 'clients'] }
 
-- hosts: prometheus
+- hosts: monitoring
   become: yes
   roles:
     - { role: prometheus, tags: ['monitoring', 'prometheus'] }

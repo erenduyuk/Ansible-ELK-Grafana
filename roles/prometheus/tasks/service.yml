@@ -32,3 +32,11 @@
     name: prometheus
     state: started
     enabled: yes
+
+- name: Check prometheus service status
+  ansible.builtin.systemd:
+    name: prometheus
+    state: started
+  register: prometheus_status
+  failed_when: prometheus_status.status != 0
+  changed_when: false
