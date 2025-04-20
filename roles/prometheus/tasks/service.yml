@@ -1,0 +1,7 @@
+---
+
+- name: Print test message
+  ansible.builtin.debug:
+    msg: "Prometheus service is running and enabled"
+  tags:
+    - prometheus_service
