@@ -1,3 +1,23 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # tasks file for roles/grafana
+
+- name: Installation tasks
+  ansible.builtin.import_tasks: install.yml
+  tags: 
+    - grafana_install
+
+- name: Configuration tasks
+  ansible.builtin.import_tasks: config.yml
+  tags: 
+    - grafana_config
+
+- name: Servcie tasks
+  ansible.builtin.import_tasks: service.yml
+  tags: 
+    - grafana_service
+
+- name: Dashboard tasks
+  ansible.builtin.import_tasks: dashboard.yml
+  tags: 
+    - grafana_dashboard

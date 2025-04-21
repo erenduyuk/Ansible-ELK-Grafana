@@ -1,0 +1,7 @@
+---
+
+- name: Create provisioning directory for datasources
+  ansible.builtin.file:
+    path: /etc/grafana/provisioning/datasources
+    state: directory
+    
