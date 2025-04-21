@@ -3,19 +3,18 @@
 - hosts: elk
   become: yes
   roles:
-    - elasticsearch
-    - logstash
-    - kibana
+    - { role: elasticsearch, tags: ['elasticsearch', 'elk'] }
+    - { role: logstash, tags: ['logstash', 'elk'] }
+    - { role: kibana, tags: ['kibana', 'elk'] }
 
-- hosts: clients
+- hosts: client
   become: yes
   roles:
-    - node_exporter
-    - filebeat  
+    - { role: filebeat, tags: ['filebeat', 'client'] }
+    - { role: node_exporter, tags: ['node_exporter', 'client'] }
 
 - hosts: monitoring
   become: yes
   roles:
-    - prometheus
-    - grafana
-    - alertmanager
+    - { role: prometheus, tags: ['monitoring', 'prometheus'] }
+    - { role: grafana, tags: ['monitoring', 'grafana'] }

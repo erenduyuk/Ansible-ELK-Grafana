@@ -1,3 +1,18 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # tasks file for roles/prometheus
+
+- name: Installation tasks
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - prometheus_install
+
+- name: Configuration tasks
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - prometheus_config
+
+- name: Servcie tasks
+  ansible.builtin.import_tasks: service.yml
+  tags:
+    - prometheus_service

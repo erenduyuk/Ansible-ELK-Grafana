@@ -1,0 +1,31 @@
+---
+
+- name: Start grafana service
+  ansible.builtin.systemd:
+    name: grafana-server
+    enabled: true
+    state: started
+
+- name: Ensure systemd override directory exists
+  ansible.builtin.file:
+    path: /etc/systemd/system/grafana-server.service.d
+    state: directory
+    mode: '0755'
+
+- name: Override grafana-server service to run as grafana user
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/grafana-server.service.d/override.conf
+    content: |
+      [Service]
+      User=grafana
+      Group=grafana
+    mode: '0644'
+  notify: Restart Grafana
+
+- name: Check grafana service status
+  ansible.builtin.systemd:
+    name: grafana-server
+    state: started
+  register: grafana_status
+  failed_when: grafana_status.status.ActiveState != "active"
+  changed_when: false
