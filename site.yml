@@ -7,11 +7,11 @@
     - { role: logstash, tags: ['logstash', 'elk'] }
     - { role: kibana, tags: ['kibana', 'elk'] }
 
-- hosts: clients
+- hosts: client
   become: yes
   roles:
-    - { role: filebeat, tags: ['filebeat', 'clients'] }
-    - { role: node_exporter, tags: ['node_exporter', 'clients'] }
+    - { role: filebeat, tags: ['filebeat', 'client'] }
+    - { role: node_exporter, tags: ['node_exporter', 'client'] }
 
 - hosts: monitoring
   become: yes

@@ -1,3 +1,13 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # tasks file for roles/node_exporter
+
+- name: Installation tasks
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - node_exporter_install
+
+- name: Service tasks
+  ansible.builtin.import_tasks: service.yml
+  tags:
+    - node_exporter_service
