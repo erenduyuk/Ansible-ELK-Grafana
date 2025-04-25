@@ -1,0 +1,11 @@
+---
+
+- name: Enable Logstash service
+  ansible.builtin.systemd:
+    name: logstash
+    enabled: yes
+
+- name: Start Logstash service
+  ansible.builtin.service:
+    name: logstash
+    state: started

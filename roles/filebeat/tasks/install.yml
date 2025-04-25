@@ -1,0 +1,25 @@
+---
+
+- name: Ensure dependencies are installed
+  ansible.builtin.apt:
+    name: apt-transport-https
+    state: present
+    update_cache: yes
+
+- name: Add Elastic GPG key
+  ansible.builtin.shell: |
+    curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /etc/apt/keyrings/elastic.gpg
+  args:
+    creates: /etc/apt/keyrings/elastic.gpg
+
+- name: Add Elastic APT repository
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/etc/apt/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main"
+    state: present
+    filename: elastic
+    update_cache: yes
+
+- name: Install Filebeat
+  ansible.builtin.apt:
+    name: filebeat
+    state: present

@@ -1,3 +1,18 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # tasks file for roles/logstash
+
+- name: Installation tasks
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - logstash_install
+
+- name: Configuration tasks
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - logstash_config
+
+- name: Service tasks
+  ansible.builtin.import_tasks: service.yml
+  tags:
+    - logstash_service

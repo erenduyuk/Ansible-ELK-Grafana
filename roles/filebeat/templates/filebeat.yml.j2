@@ -1,0 +1,17 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/syslog
+      - /var/log/auth.log
+
+output.logstash:
+  hosts: ["{{ logstash_host }}:5044"]
+
+setup.template.enabled: false
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
