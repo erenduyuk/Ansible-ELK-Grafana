@@ -1,3 +1,8 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # handlers file for roles/logstash
+
+- name: Restart Logstash
+  ansible.builtin.service:
+    name: logstash
+    state: restarted

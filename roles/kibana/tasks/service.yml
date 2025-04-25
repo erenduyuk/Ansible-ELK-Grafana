@@ -1,0 +1,11 @@
+---
+
+- name: Enable Kibana service
+  ansible.builtin.systemd:
+    name: kibana
+    enabled: yes
+
+- name: Start Kibana service
+  ansible.builtin.service:
+    name: kibana
+    state: started

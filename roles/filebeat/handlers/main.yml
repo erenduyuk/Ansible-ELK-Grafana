@@ -1,3 +1,8 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # handlers file for roles/filebeat
+
+- name: Restart Filebeat
+  ansible.builtin.service:
+    name: filebeat
+    state: restarted

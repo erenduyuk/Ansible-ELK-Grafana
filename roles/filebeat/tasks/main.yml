@@ -1,3 +1,18 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # tasks file for roles/filebeat
+
+- name: Installation tasks
+  include_tasks: install.yml
+  tags:
+    - filebeat_install
+
+- name: Configure tasks
+  include_tasks: config.yml
+  tags:
+    - filebeat_config
+
+- name: Service tasks
+  include_tasks: service.yml
+  tags:
+    - filebeat_service

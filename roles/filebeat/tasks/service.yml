@@ -1,0 +1,11 @@
+---
+
+- name: Enable Filebeat service
+  ansible.builtin.systemd:
+    name: filebeat
+    enabled: yes
+
+- name: Start Filebeat service
+  ansible.builtin.service:
+    name: filebeat
+    state: started

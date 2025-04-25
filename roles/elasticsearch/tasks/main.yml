@@ -1,3 +1,18 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # tasks file for roles/elasticsearch
+
+- name: Installation tasks
+  ansible.builtin.import_tasks: install.yml
+  tags: 
+    - elk_install
+
+- name: Configuration tasks
+  ansible.builtin.import_tasks: config.yml
+  tags: 
+    - elk_config
+
+- name: Service tasks
+  ansible.builtin.import_tasks: service.yml
+  tags: 
+    - elk_service

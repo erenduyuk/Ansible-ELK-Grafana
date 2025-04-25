@@ -1,3 +1,8 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # handlers file for roles/elasticsearch
+
+- name: Restart Elasticsearch
+  ansible.builtin.service:
+    name: elasticsearch
+    state: restarted
