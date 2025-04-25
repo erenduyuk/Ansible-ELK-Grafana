@@ -10,6 +10,6 @@ scrape_configs:
   - job_name: 'node_exporters'
     static_configs:
       - targets:
-{% for host in groups['clients'] %}
+{% for host in groups['client'] %}
           - '{{ host }}:9100'
 {% endfor %}
